@@ -6,7 +6,7 @@ const Headers    = require('./crawler/headers');
 
 class Crawler
 {
-	constructor(headers, userAgent, request)
+	constructor(request, headers, userAgent)
 	{
 		/**
 		 * Init classes
