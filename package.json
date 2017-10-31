@@ -1,0 +1,41 @@
+{
+  "name": "crawler-detect",
+  "version": "1.0.0",
+  "description": "This is an ES6 adaptation of the original PHP library CrawlerDetect, this library will help you detect bots/crawlers/spiders vie the useragent.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "dev": "webpack-dev-server --inline --hot --quiet --port=8000",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JefferyHus/es6-crawler-detect.git"
+  },
+  "keywords": [
+    "es6-javascript",
+    "crawler",
+    "bots",
+    "spider",
+    "detection"
+  ],
+  "author": "Jeffery Hussin <jefferytutorials@gmail.com> (http://github.com/jefferyhus)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JefferyHus/es6-crawler-detect/issues"
+  },
+  "homepage": "https://github.com/JefferyHus/es6-crawler-detect#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "style-loader": "^0.19.0",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.3"
+  }
+}
