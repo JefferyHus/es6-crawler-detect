@@ -10,6 +10,7 @@ This Library is an ES6 version of the original PHP class @[CrawlerDetect](https:
 `npm install es6-crawler-detect`
 
 ## Usage
+#### ECMAScript 6 (ES6)/ ECMAScript 2015 (ES2015)
 ```javascript
 'use strict';
 
@@ -37,6 +38,36 @@ app.get('your/route', function async (request, response) {
   // Output the name of the bot that matched (if any)
   response.send(CrawlerDetector.getMatches())
 })
+```
+#### ECMAScript 5 (ES5)
+```xml
+<head>
+	<!-- Metas -->
+	<meta name="title" content="ES6-CrawlerDetect">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<title>CrawlerDetect - the web crawler detection library</title>
+	<!-- Scripts -->
+	<script type="text/javascript" src="./your/path/to/main.prod.js"></script>
+</head>
+```
+
+```javascript
+  // create a new Crawler instance
+  var CrawlerDetector = new Crawler();
+  var userAgentString = navigator.userAgent;
+  
+  // check the current visitor's useragent
+  if ( CrawlerDetector.isCrawler(userAgentString) )
+  {
+    // true if crawler user agent detected
+  }
+  
+  // Output the name of the bot that matched (if any)
+  console.log(CrawlerDetector.getMatches());
 ```
 
 ## Contributing
