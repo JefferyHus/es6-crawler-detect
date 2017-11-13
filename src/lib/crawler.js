@@ -128,7 +128,7 @@ class Crawler
 			this.matches = matches;
 		}
 		
-		return matches !== null ? (matches.length ? true : false) : {};
+		return matches !== null ? (matches.length ? true : false) : false;
 	}
 
 	/**
