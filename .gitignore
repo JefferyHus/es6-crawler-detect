@@ -1,4 +1,6 @@
 .DS_Store
 node_modules/
+.yarn-cache/
 npm-debug.log
+dist/dist/
 test/
