@@ -6,11 +6,20 @@ const Headers    = require('./crawler/headers');
 
 class Crawler
 {
-	constructor(request, headers, userAgent)
+	constructor(request)
 	{
+
+    /**
+     * Set userAgent and headers
+     */
+
+    const { headers } = request; 
+    const userAgent = headers['user-agent'];
+
 		/**
 		 * Init classes
 		 */
+
 		this._init();
 
 		/**
@@ -112,10 +121,10 @@ class Crawler
 	isCrawler(userAgent = undefined)
 	{
 		var agent = (typeof userAgent == "undefined" || userAgent == null ? this.userAgent : userAgent);
-		
+
 		// test on compiled regx
 		agent = agent.replace(this.compiledExclusions, '');
-		
+
 		if ( agent.trim().length == 0 )
 		{
 			return false;
@@ -127,7 +136,7 @@ class Crawler
 		{
 			this.matches = matches;
 		}
-		
+
 		return matches !== null ? (matches.length ? true : false) : false;
 	}
 
