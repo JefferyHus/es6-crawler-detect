@@ -1,3 +1,11 @@
 {
-  "presets": ["es2015"]
+	"presets": [
+		["env", {
+			"useBuiltIns": "usage",
+			"targets": {
+				// The % refers to the global coverage of users from browserslist
+				"browsers": ["last 2 versions", "not ie <= 10"]
+			}
+		}]
+	]
 }

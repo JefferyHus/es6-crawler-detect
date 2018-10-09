@@ -49,7 +49,7 @@ if (process.env.NODE_ENV === 'production')
 else
 {
   // development configurations
-  module.exports.output.filename = 'dist/[name].dev.js';
+  module.exports.output.filename = '[name].dev.js';
 
   module.exports.module.loaders = module.exports.module.loaders.concat([
     {
