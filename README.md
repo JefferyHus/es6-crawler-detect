@@ -5,6 +5,8 @@
 
 [![npm version](https://badge.fury.io/js/es6-crawler-detect.svg)](https://badge.fury.io/js/es6-crawler-detect) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
+
+
 # About ES6-CrawlerDetect
 This Library is an ES6 version of the original PHP class @[CrawlerDetect](https://github.com/JayBizzle/Crawler-Detect), it helps you detect bots/crawlers and spiders only by scanning the user-agent string or from the global `request.headers`.
 
