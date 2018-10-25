@@ -3,7 +3,7 @@
 <br><br>
 </p>
 
-[![npm version](https://badge.fury.io/js/es6-crawler-detect.svg)](https://badge.fury.io/js/es6-crawler-detect) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+[![npm version](https://badge.fury.io/js/es6-crawler-detect.svg)](https://badge.fury.io/js/es6-crawler-detect) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/JefferyHus/es6-crawler-detect/issues)
 
 
 
