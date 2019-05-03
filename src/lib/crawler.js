@@ -18,11 +18,12 @@ class Crawler
 		 */
 		this.request = typeof request === "object" ? request : {};
 
-		/**
-		 * Regex
-		 */
-		this.compiledRegexList  = this.compileRegex(this.crawlers.getAll());
-		this.compiledExclusions = this.compileRegex(this.exclusions.getAll());
+		// The regex-list must not be used with g-flag!
+		// See: https://stackoverflow.com/questions/1520800/why-does-a-regexp-with-global-flag-give-wrong-results
+		this.compiledRegexList  = new RegExp(this.crawlers.getAll().join('|').trim());
+
+		// The exclusions should be used with g-flag in order to remove each value.
+		this.compiledExclusions = new RegExp(this.exclusions.getAll().join('|').trim(), "g");
 
 		/**
 		 * Set http headers
@@ -43,15 +44,6 @@ class Crawler
 		this.crawlers   = new Crawlers();
 		this.headers    = new Headers();
 		this.exclusions = new Exclusions();
-	}
-
-	/**
-	 * Compile the regex patterns into one regex string.
-	 */
-	compileRegex(patterns)
-	{
-		// create a Regexp
-		return new RegExp(patterns.join('|').trim(), "g");
 	}
 
 	/**
@@ -112,10 +104,10 @@ class Crawler
 	isCrawler(userAgent = undefined)
 	{
 		var agent = (typeof userAgent == "undefined" || userAgent == null ? this.userAgent : userAgent);
-		
+
 		// test on compiled regx
 		agent = agent.replace(this.compiledExclusions, '');
-		
+
 		if ( agent.trim().length == 0 )
 		{
 			return false;
@@ -127,7 +119,7 @@ class Crawler
 		{
 			this.matches = matches;
 		}
-		
+
 		return matches !== null ? (matches.length ? true : false) : false;
 	}
 
