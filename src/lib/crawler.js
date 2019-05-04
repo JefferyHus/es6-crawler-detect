@@ -20,10 +20,10 @@ class Crawler
 
 		// The regex-list must not be used with g-flag!
 		// See: https://stackoverflow.com/questions/1520800/why-does-a-regexp-with-global-flag-give-wrong-results
-		this.compiledRegexList  = new RegExp(this.crawlers.getAll().join('|').trim());
+		this.compiledRegexList = this.compileRegex(this.crawlers.getAll());
 
 		// The exclusions should be used with g-flag in order to remove each value.
-		this.compiledExclusions = new RegExp(this.exclusions.getAll().join('|').trim(), "g");
+		this.compiledExclusions = this.compileRegex(this.exclusions.getAll(), 'g');
 
 		/**
 		 * Set http headers
@@ -44,6 +44,10 @@ class Crawler
 		this.crawlers   = new Crawlers();
 		this.headers    = new Headers();
 		this.exclusions = new Exclusions();
+	}
+
+	compileRegex(patterns, flags) {
+		return new RegExp(patterns.join('|').trim(), flags);
 	}
 
 	/**
