@@ -1,20 +1,26 @@
 'use strict';
 
+const path = require('path')
 const express = require('express')
-const Crawler = require('../../src')
+const {middleware} = require('../../src')
 
 const app = express()
 const port = 3000
 
+app.use(middleware)
+
+app.use('/dist', express.static(path.join(__dirname + '/dist')))
+
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname + '/index.html'));
+})
+
 app.get('/crawler', function async (request, response) {
-  // create a new Crawler instance
-  var CrawlerDetector = new Crawler(request)
-  
   // or check a user agent string
-  CrawlerDetector.isCrawler('Mozilla/5.0 (compatible; Sosospider/2.0; +http://help.soso.com/webspider.htm)')
+  request.Crawler.isCrawler('Mozilla/5.0 (compatible; Sosospider/2.0; +http://help.soso.com/webspider.htm)')
   
   // Output the name of the bot that matched (if any)
-  response.send(CrawlerDetector.getMatches())
+  response.send(request.Crawler.getMatches())
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

@@ -20,7 +20,7 @@ This Library is an ES6 version of the original PHP class @[CrawlerDetect](https:
 'use strict';
 
 const express = require('express')
-const Crawler = require('es6-crawler-detect/src')
+const {Crawler, middleware} = require('es6-crawler-detect/src')
 
 const app = express()
 
@@ -43,6 +43,19 @@ app.get('your/route', function async (request, response) {
   // Output the name of the bot that matched (if any)
   response.send(CrawlerDetector.getMatches())
 })
+
+/**
+ * Or by using the middleware
+*/
+app.use(middleware)
+
+app.get('/crawler', function async (request, response) {
+  // or check a user agent string
+  request.Crawler.isCrawler('Mozilla/5.0 (compatible; Sosospider/2.0; +http://help.soso.com/webspider.htm)')
+  
+  // Output the name of the bot that matched (if any)
+  response.send(request.Crawler.getMatches())
+})
 ```
 #### ECMAScript 5 (ES5)
 ```xml
@@ -56,13 +69,13 @@ app.get('your/route', function async (request, response) {
 	<meta name="keywords" content="">
 	<title>CrawlerDetect - the web crawler detection library</title>
 	<!-- Scripts -->
-	<script type="text/javascript" src="./your/path/to/main.prod.js"></script>
+	<script type="text/javascript" src="./your/path/to/main.bundle.js"></script>
 </head>
 ```
 
 ```javascript
   // create a new Crawler instance
-  var CrawlerDetector = new Crawler();
+  var CrawlerDetector = new Crawler.Crawler();
   var userAgentString = navigator.userAgent;
   
   // check the current visitor's useragent
@@ -72,7 +85,7 @@ app.get('your/route', function async (request, response) {
   }
   
   // Output the name of the bot that matched (if any)
-  console.log(CrawlerDetector.getMatches());
+  console.devug(CrawlerDetector.getMatches());
 ```
 
 ## Contributing

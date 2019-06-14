@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ES6-Crawler-Detect</title>
+  <!-- Load the build -->
+  <script src="/dist/crawler.min.js"></script>
+  <script>
+    var Crawler = new Crawler.Crawler();
+    // test a spider expression
+    if (Crawler.isCrawler('isCrawler("Mozilla/5.0 (compatible; Sosospider/2.0; +http://help.soso.com/webspider.htm)")')) {
+      // log the matches
+      console.debug(Crawler.getMatches());
+    }
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

@@ -7,8 +7,8 @@
     "lib": "lib"
   },
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot --quiet --port=8000",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config webpack.prod.js",
+    "dev": "cross-env NODE_ENV=development webpack --progress --hide-modules --config webpack.dev.js",
     "test": "mocha test/**/*.test.js"
   },
   "repository": {
@@ -29,16 +29,19 @@
   },
   "homepage": "https://github.com/JefferyHus/es6-crawler-detect#readme",
   "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-es2015": "^6.24.1",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "babel-loader": "^8.0.6",
     "mocha": "^6.1.4",
-    "style-loader": "^0.19.1",
-    "webpack": "^3.12.0",
-    "webpack-dev-server": "^3.1.14"
-  }
+    "prettier": "1.18.2",
+    "style-loader": "^0.23.1",
+    "terser-webpack-plugin": "^1.3.0",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2",
+    "webpack-merge": "^4.2.1"
+  },
+  "dependencies": {}
 }
