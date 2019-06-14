@@ -15,7 +15,7 @@ This Library is an ES6 version of the original PHP class @[CrawlerDetect](https:
 `npm install es6-crawler-detect`
 
 ## Usage
-#### ECMAScript 6 (ES6)/ ECMAScript 2015 (ES2015)
+#### ECMAScript 6 (ES6)
 ```javascript
 'use strict';
 
@@ -85,7 +85,7 @@ app.get('/crawler', function async (request, response) {
   }
   
   // Output the name of the bot that matched (if any)
-  console.devug(CrawlerDetector.getMatches());
+  console.debug(CrawlerDetector.getMatches());
 ```
 
 ## Contributing
