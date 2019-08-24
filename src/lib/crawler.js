@@ -20,7 +20,7 @@ class Crawler
 
 		// The regex-list must not be used with g-flag!
 		// See: https://stackoverflow.com/questions/1520800/why-does-a-regexp-with-global-flag-give-wrong-results
-		this.compiledRegexList = this.compileRegex(this.crawlers.getAll());
+		this.compiledRegexList = this.compileRegex(this.crawlers.getAll(), 'i');
 
 		// The exclusions should be used with g-flag in order to remove each value.
 		this.compiledExclusions = this.compileRegex(this.exclusions.getAll(), 'g');
