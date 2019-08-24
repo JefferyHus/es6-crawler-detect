@@ -22,5 +22,10 @@ describe("crawler", () => {
             assert.strictEqual(crawler.compileRegex(patterns, "g").flags, "g");
             assert.strictEqual(crawler.compileRegex(patterns, "i").flags, "i");
         });
+
+        it("should be case insensitive", ()=>{
+            assert.strictEqual(crawler.isCrawler("Facebot\1.0"), true);
+            assert.strictEqual(crawler.getMatches("Facebot\1.0"), "Facebot", "Crawler was not able to indentify crawler correctly");
+        })
     });
 });
