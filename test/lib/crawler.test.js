@@ -10,6 +10,10 @@ describe("crawler", () => {
         assert.strictEqual(crawler.isCrawler("Zombie.js"), true, "crawler was not identified on subsequent call");
     });
 
+    it("will identify telegram bot", () => {
+        assert.strictEqual(crawler.isCrawler("TelegramBot (like TwitterBot)"), true);
+    });
+
     describe("regex-compilation", () => {
         it("will join list of patterns with pipes", () => {
             assert.strictEqual(crawler.compileRegex(["some", "patterns"]).source, "some|patterns");
