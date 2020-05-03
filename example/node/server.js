@@ -2,7 +2,7 @@
 
 const path = require('path')
 const express = require('express')
-const {middleware} = require('../../src')
+const { middleware } = require('es6-crawler-detect')
 
 const app = express()
 const port = 3000
