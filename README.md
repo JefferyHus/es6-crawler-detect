@@ -21,7 +21,7 @@ This Library is an ES6 version of the original PHP class @[CrawlerDetect](https:
 'use strict';
 
 const express = require('express')
-const {Crawler, middleware} = require('es6-crawler-detect/src')
+const {Crawler, middleware} = require('es6-crawler-detect')
 
 const app = express()
 
