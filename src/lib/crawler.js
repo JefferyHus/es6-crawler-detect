@@ -16,7 +16,7 @@ class Crawler
 		/**
 		 * This request must be an object
 		 */
-		this.request = typeof request === "object" ? request : {};
+		this.request = typeof request === 'object' ? request : {};
 
 		// The regex-list must not be used with g-flag!
 		// See: https://stackoverflow.com/questions/1520800/why-does-a-regexp-with-global-flag-give-wrong-results
@@ -56,7 +56,7 @@ class Crawler
 	setHttpHeaders(headers)
 	{
 		// Use the Request headers if httpHeaders is not defined
-        if ( typeof headers !== "object" || Object.keys(headers).length == 0 )
+        if ( typeof headers === 'undefined' || Object.keys(headers).length === 0 )
         {
         	headers = Object.keys(this.request).length ? this.request.headers : {};
         }
@@ -64,14 +64,10 @@ class Crawler
 		// Clear existing headers.
 		this.httpHeaders = [];
 
-        // Only save HTTP headers. In NodeJS land, that means
-        // Only Request vars that start with HTTP-.
+        // Only save HTTP headers.
 		for ( const key in headers )
 		{
-			if ( key.substring(0, 5) === "http-" )
-			{
-				this.httpHeaders[key] = headers[key];
-			}
+			this.httpHeaders[key] = headers[key];
 		}
 	}
 
@@ -80,11 +76,11 @@ class Crawler
 	 */
 	setUserAgent(userAgent)
 	{
-		if ( typeof userAgent == "undefined" || userAgent == null || ! userAgent.length )
+		if ( typeof userAgent === 'undefined' || userAgent === null || ! userAgent.length )
 		{
 			for ( const header of this.getUaHttpHeaders() )
 			{
-				if ( Object.keys(this.httpHeaders).indexOf(header.toLowerCase()) === 0 )
+				if ( Object.keys(this.httpHeaders).indexOf(header.toLowerCase()) >= 0 )
 				{
 					userAgent += this.httpHeaders[header] + ' ';
 				}
@@ -107,12 +103,12 @@ class Crawler
 	 */
 	isCrawler(userAgent = undefined)
 	{
-		var agent = (typeof userAgent == "undefined" || userAgent == null ? this.userAgent : userAgent);
+		var agent = (typeof userAgent === 'undefined' || userAgent === null ? this.userAgent : userAgent);
 
 		// test on compiled regx
 		agent = agent.replace(this.compiledExclusions, '');
 
-		if ( agent.trim().length == 0 )
+		if ( agent.trim().length === 0 )
 		{
 			return false;
 		}
