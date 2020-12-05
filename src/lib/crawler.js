@@ -103,7 +103,7 @@ class Crawler
 	 */
 	isCrawler(userAgent = undefined)
 	{
-		if (Buffer.byteLength(userAgent | "", 'utf8') > 4096) {
+		if (Buffer.byteLength(userAgent || "", 'utf8') > 4096) {
 			return false;
 		}
 		var agent = (typeof userAgent === 'undefined' || userAgent === null ? this.userAgent : userAgent);
