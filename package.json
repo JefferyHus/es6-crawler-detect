@@ -1,6 +1,6 @@
 {
   "name": "es6-crawler-detect",
-  "version": "3.1.2",
+  "version": "3.1.3",
   "description": "This is an ES6 adaptation of the original PHP library CrawlerDetect, this library will help you detect bots/crawlers/spiders vie the useragent.",
   "main": "src/index.js",
   "directories": {
@@ -43,6 +43,5 @@
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-merge": "^4.2.2"
-  },
-  "dependencies": {}
+  }
 }
