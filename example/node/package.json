@@ -1,0 +1,11 @@
+{
+  "name": "node-example",
+  "version": "1.0.0",
+  "description": "Using the crawler with express servers",
+  "main": "server.js",
+  "author": "Jeffery Hussin <jefferytutorials@gmail.com> (http://github.com/jefferyhus)",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}

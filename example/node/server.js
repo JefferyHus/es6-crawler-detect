@@ -2,12 +2,14 @@
 
 const path = require('path')
 const express = require('express')
-const { middleware } = require('es6-crawler-detect')
+const { middleware } = require('../../src/index');
 
 const app = express()
 const port = 3000
 
-app.use(middleware)
+app.use(middleware((request, response) => {
+  console.log("Testing the callback\n");
+}))
 
 app.use('/dist', express.static(path.join(__dirname + '/dist')))
 

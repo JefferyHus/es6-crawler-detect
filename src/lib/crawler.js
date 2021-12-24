@@ -46,7 +46,8 @@ class Crawler
 		this.exclusions = new Exclusions();
 	}
 
-	compileRegex(patterns, flags) {
+    compileRegex(patterns, flags)
+    {
 		return new RegExp(patterns.join('|').trim(), flags);
 	}
 
