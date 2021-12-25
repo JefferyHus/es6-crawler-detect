@@ -1,6 +1,4 @@
-const Crawler = require("./lib/crawler")
-const vm = require('vm');
-const CrawlerRunner = new vm.Script('new Crawler(req)');
+const Crawler = require('./lib/crawler');
 
 module.exports = {
   Crawler,
@@ -11,7 +9,7 @@ module.exports = {
         cb.call(req, res);
       }
       // Initiate
-      req.Crawler = CrawlerRunner.runInThisContext({timeout: 100, microtaskMode: 'afterEvaluate'});
+      req.Crawler = new Crawler(req);
       next();
     };
   },
