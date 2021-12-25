@@ -21,7 +21,7 @@ class Crawler {
     this.compiledRegexList = this.compileRegex(this.crawlers.getAll(), 'i');
 
     // The exclusions should be used with g-flag in order to remove each value.
-    this.compiledExclusions = this.compileRegex(this.exclusions.getAll(), 'g');
+    this.compiledExclusions = this.compileRegex(this.exclusions.getAll(), 'gi');
 
     /**
      * Set http headers
@@ -44,7 +44,7 @@ class Crawler {
   }
 
   compileRegex(patterns, flags) {
-    return new RegExp(patterns.join('|').trim(), flags);
+    return new RegExp(patterns.join('|'), flags);
   }
 
   /**
@@ -111,7 +111,7 @@ class Crawler {
       return false;
     }
 
-    var matches = this.compiledRegexList.exec(agent.trim());
+    var matches = this.compiledRegexList.exec(agent);
 
     if (matches) {
       this.matches = matches;

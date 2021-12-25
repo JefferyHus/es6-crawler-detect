@@ -54,7 +54,7 @@ class Exclusions extends Provider {
       '; IDbot',
       '; ID bot',
       '; POWER BOT',
-      ';',
+      'OCTOPUS-CORE',
     ];
   }
 }
