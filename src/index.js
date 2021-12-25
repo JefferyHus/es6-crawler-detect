@@ -1,17 +1,17 @@
-const Crawler = require("./lib/crawler")
+const Crawler = require('./lib/crawler');
 
 module.exports = {
   Crawler,
 
-  middleware (cb) {
+  middleware(cb) {
     return (req, res, next) => {
       // If there is a cb, execute it
       if (typeof cb === 'function') {
         cb.call(req, res);
       }
       // Initiate
-      req.Crawler = new Crawler(req)
-      next()
-    }
-  }
-}
+      req.Crawler = new Crawler(req);
+      next();
+    };
+  },
+};

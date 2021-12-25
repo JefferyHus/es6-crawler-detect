@@ -4,7 +4,8 @@
     "browser": false,
     "commonjs": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "mocha": true
   },
   "rules": {
     "max-len": [
@@ -22,5 +23,8 @@
       }
     ]
   },
-  "parser": "babel-eslint"
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false
+  }
 }
