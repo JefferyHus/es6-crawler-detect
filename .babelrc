@@ -7,7 +7,8 @@
 					// The % refers to the global coverage of users from browserslist
 					"browsers": ["> 0.25%, not dead"]
 				},
-				"useBuiltIns": "usage"
+				"useBuiltIns": "usage",
+				"corejs": { "version": "3", "proposals": true }
 			}
 		]
   ],

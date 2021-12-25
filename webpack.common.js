@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -6,15 +6,15 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
-    library: 'Crawler'
+    library: 'Crawler',
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         use: 'babel-loader',
-        exclude: /node_modules/
-      }
-    ]
-  }
-}
+        exclude: /node_modules/,
+      },
+    ],
+  },
+};
