@@ -73,7 +73,7 @@ describe('crawler', () => {
       rl.close();
     });
 
-    it('should simulate a current user', async () => {
+    it('should identify the crawler from a given headers', async () => {
       crawler = new Crawler(null, {
         host: '127.0.0.1:3000',
         'user-agent': 'curl/7.73.0',
