@@ -2,7 +2,7 @@
 
 const path = require('path');
 const express = require('express');
-const { middleware } = require('../../src/index');
+const { middleware, Crawler } = require('../../src/index');
 
 const app = express();
 const port = 3000;
@@ -22,11 +22,17 @@ app.get('/', function (req, res) {
 app.get('/crawler', function async(request, response) {
   // or check a user agent string
   request.Crawler.isCrawler(
-    'Mozilla/5.0 (compatible; Sosospider/2.0; +http://help.soso.com/webspider.htm)'
+    'TinEye-bot/0.51 (see http://www.tineye.com/crawler.html)'
   );
 
   // Output the name of the bot that matched (if any)
   response.send(request.Crawler.getMatches());
+});
+
+app.get('/curl', function async(request, response) {
+  var CrawlerDetector = new Crawler(request);
+  CrawlerDetector.isCrawler(); // true
+  response.send(CrawlerDetector.getMatches());
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

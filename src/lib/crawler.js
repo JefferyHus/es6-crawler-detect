@@ -21,7 +21,7 @@ class Crawler {
     this.compiledRegexList = this.compileRegex(this.crawlers.getAll(), 'i');
 
     // The exclusions should be used with g-flag in order to remove each value.
-    this.compiledExclusions = this.compileRegex(this.exclusions.getAll(), 'g');
+    this.compiledExclusions = this.compileRegex(this.exclusions.getAll(), 'gi');
 
     /**
      * Set http headers
@@ -44,7 +44,7 @@ class Crawler {
   }
 
   compileRegex(patterns, flags) {
-    return new RegExp(patterns.join('|').trim(), flags);
+    return new RegExp(patterns.join('|'), flags);
   }
 
   /**
@@ -56,13 +56,8 @@ class Crawler {
       headers = Object.keys(this.request).length ? this.request.headers : {};
     }
 
-    // Clear existing headers.
-    this.httpHeaders = [];
-
-    // Only save HTTP headers.
-    for (const key in headers) {
-      this.httpHeaders[key] = headers[key];
-    }
+    // Save the headers.
+    this.httpHeaders = headers;
   }
 
   /**
@@ -76,7 +71,7 @@ class Crawler {
     ) {
       for (const header of this.getUaHttpHeaders()) {
         if (Object.keys(this.httpHeaders).indexOf(header.toLowerCase()) >= 0) {
-          userAgent += this.httpHeaders[header] + ' ';
+          userAgent += this.httpHeaders[header.toLowerCase()] + ' ';
         }
       }
     }
@@ -111,7 +106,7 @@ class Crawler {
       return false;
     }
 
-    var matches = this.compiledRegexList.exec(agent.trim());
+    var matches = this.compiledRegexList.exec(agent);
 
     if (matches) {
       this.matches = matches;

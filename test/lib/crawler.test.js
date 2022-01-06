@@ -1,25 +1,10 @@
-var assert = require('assert');
-
+const readline = require('readline');
+const fs = require('fs');
+const assert = require('assert');
 const Crawler = require('../../src/lib/crawler');
 
 describe('crawler', () => {
   var crawler = new Crawler();
-
-  it('will identify crawlers correctly on subsequent calls', () => {
-    assert.strictEqual(crawler.isCrawler('Zombie.js'), true);
-    assert.strictEqual(
-      crawler.isCrawler('Zombie.js'),
-      true,
-      'crawler was not identified on subsequent call'
-    );
-  });
-
-  it('will identify telegram bot', () => {
-    assert.strictEqual(
-      crawler.isCrawler('TelegramBot (like TwitterBot)'),
-      true
-    );
-  });
 
   describe('regex-compilation', () => {
     it('will join list of patterns with pipes', () => {
@@ -28,9 +13,12 @@ describe('crawler', () => {
         'some|patterns'
       );
       assert.strictEqual(crawler.compileRegex(['single']).source, 'single');
+    });
+
+    it('keeps the whitespace', () => {
       assert.strictEqual(
-        crawler.compileRegex(['  remove-whitespaces ']).source,
-        'remove-whitespaces'
+        crawler.compileRegex(['  keep-whitespaces ']).source,
+        '  keep-whitespaces '
       );
     });
 
@@ -47,6 +35,60 @@ describe('crawler', () => {
         'Facebot',
         'Crawler was not able to indentify crawler correctly'
       );
+    });
+  });
+
+  describe('crawler-identification', () => {
+    it('should be able to identify crawlers', async () => {
+      const rl = readline.createInterface({
+        input: fs.createReadStream('./test/lib/database/crawlers.txt'),
+        crlfDelay: Infinity,
+      });
+
+      for await (const line of rl) {
+        assert.strictEqual(
+          crawler.isCrawler(line),
+          true,
+          `${line} is not a crawler`
+        );
+      }
+
+      rl.close();
+    });
+
+    it('should be able to identify devices', async () => {
+      const rl = readline.createInterface({
+        input: fs.createReadStream('./test/lib/database/devices.txt'),
+        crlfDelay: Infinity,
+      });
+
+      for await (const line of rl) {
+        assert.strictEqual(
+          crawler.isCrawler(line),
+          false,
+          `${line} is not a device`
+        );
+      }
+
+      rl.close();
+    });
+
+    it('should identify the crawler from a given headers', async () => {
+      crawler = new Crawler(null, {
+        host: '127.0.0.1:3000',
+        'user-agent': 'curl/7.73.0',
+        accept: '*/*',
+      });
+
+      assert.strictEqual(crawler.isCrawler(), true);
+    });
+
+    it('should identify the crawler from request headers', async () => {
+      crawler = new Crawler({
+        headers: { 'user-agent': 'curl/7.73.0', accept: '*/*' },
+      });
+
+      assert.strictEqual(crawler.isCrawler(), true);
     });
   });
 });
