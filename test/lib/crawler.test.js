@@ -72,5 +72,23 @@ describe('crawler', () => {
 
       rl.close();
     });
+
+    it('should simulate a current user', async () => {
+      crawler = new Crawler(null, {
+        host: '127.0.0.1:3000',
+        'user-agent': 'curl/7.73.0',
+        accept: '*/*',
+      });
+
+      assert.strictEqual(crawler.isCrawler(), true);
+    });
+
+    it('should identify the crawler from request headers', async () => {
+      crawler = new Crawler({
+        headers: { 'user-agent': 'curl/7.73.0', accept: '*/*' },
+      });
+
+      assert.strictEqual(crawler.isCrawler(), true);
+    });
   });
 });

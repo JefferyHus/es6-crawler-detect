@@ -56,13 +56,8 @@ class Crawler {
       headers = Object.keys(this.request).length ? this.request.headers : {};
     }
 
-    // Clear existing headers.
-    this.httpHeaders = [];
-
-    // Only save HTTP headers.
-    for (const key in headers) {
-      this.httpHeaders[key] = headers[key];
-    }
+    // Save the headers.
+    this.httpHeaders = headers;
   }
 
   /**
@@ -76,7 +71,7 @@ class Crawler {
     ) {
       for (const header of this.getUaHttpHeaders()) {
         if (Object.keys(this.httpHeaders).indexOf(header.toLowerCase()) >= 0) {
-          userAgent += this.httpHeaders[header] + ' ';
+          userAgent += this.httpHeaders[header.toLowerCase()] + ' ';
         }
       }
     }
