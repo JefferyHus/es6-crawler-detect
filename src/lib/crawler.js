@@ -69,11 +69,10 @@ class Crawler {
       userAgent === null ||
       !userAgent.length
     ) {
-      for (const header of this.getUaHttpHeaders()) {
-        if (Object.keys(this.httpHeaders).indexOf(header.toLowerCase()) >= 0) {
-          userAgent += this.httpHeaders[header.toLowerCase()] + ' ';
-        }
-      }
+      userAgent = this.getUaHttpHeaders()
+        .map((header) => this.httpHeaders[header.toLowerCase()] || '')
+        .filter((userAgentHeader) => userAgentHeader.length > 0)
+        .join(' ');
     }
 
     return userAgent;

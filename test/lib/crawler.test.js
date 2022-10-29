@@ -90,5 +90,13 @@ describe('crawler', () => {
 
       assert.strictEqual(crawler.isCrawler(), true);
     });
+
+    it('should identify the crawler from request headers with exact pattern', async () => {
+      crawler = new Crawler({
+        headers: { 'user-agent': 'b0t', accept: '*/*' },
+      });
+
+      assert.strictEqual(crawler.isCrawler(), true);
+    });
   });
 });
