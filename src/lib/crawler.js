@@ -69,10 +69,13 @@ class Crawler {
       userAgent === null ||
       !userAgent.length
     ) {
-      userAgent = this.getUaHttpHeaders()
-        .map((header) => this.httpHeaders[header.toLowerCase()] || '')
-        .filter((userAgentHeader) => userAgentHeader.length > 0)
-        .join(' ');
+      userAgent = '';
+      for (const header of this.getUaHttpHeaders()) {
+        if (Object.keys(this.httpHeaders).indexOf(header.toLowerCase()) >= 0) {
+          const separator = userAgent.length > 0 ? ' ' : '';
+          userAgent += separator + this.httpHeaders[header.toLowerCase()];
+        }
+      }
     }
 
     return userAgent;

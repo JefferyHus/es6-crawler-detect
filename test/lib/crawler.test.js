@@ -98,5 +98,13 @@ describe('crawler', () => {
 
       assert.strictEqual(crawler.isCrawler(), true);
     });
+
+    it('should do not throw an exception on empty request header', async () => {
+      crawler = new Crawler({
+        headers: { accept: '*/*' },
+      });
+
+      assert.doesNotThrow(() => crawler.isCrawler());
+    });
   });
 });
