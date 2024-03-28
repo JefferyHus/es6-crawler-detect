@@ -6,6 +6,6 @@
   "author": "Jeffery Hussin <jefferytutorials@gmail.com> (http://github.com/jefferyhus)",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.19.2"
   }
 }
