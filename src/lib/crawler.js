@@ -125,7 +125,7 @@ class Crawler {
       ? this.matches.length
         ? this.matches[0]
         : null
-      : {};
+      : null;
   }
 }
 
