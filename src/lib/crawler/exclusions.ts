@@ -1,12 +1,8 @@
-'use strict';
+import { Provider } from './provider';
 
-const Provider = require('./provider');
-
-class Exclusions extends Provider {
-  constructor() {
-    super();
-
-    this.data = [
+export class Exclusions implements Provider {
+  getAll(): string[] {
+    return [
       'Safari.[\\d\\.]*',
       'Firefox.[\\d\\.]*',
       ' Chrome.[\\d\\.]*',
@@ -58,5 +54,3 @@ class Exclusions extends Provider {
     ];
   }
 }
-
-module.exports = Exclusions;

@@ -1,12 +1,8 @@
-'use strict';
+import { Provider } from './provider';
 
-const Provider = require('./provider');
-
-class Crawlers extends Provider {
-  constructor() {
-    super();
-
-    this.data = [
+export class Crawlers implements Provider {
+  public getAll(): string[] {
+    return [
       ' YLT',
       '^Aether',
       '^Amazon Simple Notification Service Agent$',
@@ -1399,5 +1395,3 @@ class Crawlers extends Provider {
     ];
   }
 }
-
-module.exports = Crawlers;
