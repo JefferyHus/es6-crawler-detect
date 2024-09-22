@@ -1,7 +1,7 @@
+import assert from 'assert';
+import { Request } from 'express-serve-static-core';
 import * as fs from 'fs';
 import * as readline from 'readline';
-import assert from "assert";
-import { Request } from 'express-serve-static-core';
 
 import { Crawler } from '../../src';
 

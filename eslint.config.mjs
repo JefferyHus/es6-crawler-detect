@@ -23,12 +23,9 @@ export default [{
         "**/mobiles/",
         "**/node_modules/*",
     ],
-}, ...compat.extends(
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier",
-    "plugin:prettier/recommended",
-), {
+
+    files: ['**/*.ts', '**/*.tsx'],
+
     plugins: {
         "@typescript-eslint": typescriptEslint,
         "simple-import-sort": simpleImportSort,
@@ -36,6 +33,9 @@ export default [{
 
     languageOptions: {
         parser: tsParser,
+        parserOptions: {
+            project: "./tsconfig.json",
+        },
     },
 
     rules: {
@@ -54,12 +54,7 @@ export default [{
             ignoreRegExpLiterals: true,
         }],
 
-        "@typescript-eslint/no-unused-vars": ["warn", {
-            argsIgnorePattern: "^_",
-            args: "after-used",
-            varsIgnorePattern: "^_",
-            caughtErrors: "all",
-        }],
+        "@typescript-eslint/no-unused-vars": ["warn"],
 
         "simple-import-sort/imports": "error",
         "simple-import-sort/exports": "error",
