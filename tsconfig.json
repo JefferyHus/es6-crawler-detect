@@ -8,9 +8,21 @@
       "module": "node16",
       "target": "es2022",
   
+      "declaration": true,
+      "declarationMap": true,
+      "sourceMap": true,
+      "emitDeclarationOnly": false,
+      "outDir": "dist",
+
       "strict": true,
       "esModuleInterop": true,
       "skipLibCheck": true,
       "moduleResolution": "node16"
-    }
+    },
+    "ts-node": {
+      "esm": true,
+    },
+
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "dist"]
 }
