@@ -2,7 +2,7 @@
 
 const path = require('path');
 const express = require('express');
-const { middleware, Crawler } = require('../../src/index');
+const { middleware, Crawler } = require('../../dist/index');
 
 const app = express();
 const port = 3000;
@@ -30,7 +30,7 @@ app.get('/crawler', function async(request, response) {
 });
 
 app.get('/curl', function async(request, response) {
-  var CrawlerDetector = new Crawler(request);
+  const CrawlerDetector = new Crawler(request);
   CrawlerDetector.isCrawler(); // true
   response.send(CrawlerDetector.getMatches());
 });

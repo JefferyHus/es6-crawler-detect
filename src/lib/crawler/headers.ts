@@ -1,12 +1,8 @@
-'use strict';
+import { Provider } from './provider';
 
-const Provider = require('./provider');
-
-class Headers extends Provider {
-  constructor() {
-    super();
-
-    this.data = [
+export class Headers implements Provider {
+  getAll(): string[] {
+    return [
       'USER-AGENT',
       'X-OPERAMINI-PHONE-UA',
       'X-DEVICE-USER-AGENT',
@@ -20,5 +16,3 @@ class Headers extends Provider {
     ];
   }
 }
-
-module.exports = Headers;
