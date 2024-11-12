@@ -67,38 +67,39 @@ app.get('/crawler', function async (request, response) {
 })
 ```
 
-### ECMAScript 5 (ES5)
+### TypeScript
 
-```xml
-<head>
-  <!-- Metas -->
-  <meta name="title" content="ES6-CrawlerDetect">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-  <title>CrawlerDetect - the web crawler detection library</title>
-  <!-- Scripts -->
-  <script type="text/javascript" src="./your/path/to/main.bundle.js"></script>
-</head>
-```
+```typescript
+import { Crawler, middleware } from 'es6-crawler-detect'
 
-```javascript
-  // create a new Crawler instance
-  var CrawlerDetector = new Crawler.Crawler();
-  var userAgentString = navigator.userAgent;
-  
-  // check the current visitor's useragent
-  if ( CrawlerDetector.isCrawler(userAgentString) )
-  {
-    // true if crawler user agent detected
-  }
-  
-  // Output the name of the bot that matched (if any)
-  console.debug(CrawlerDetector.getMatches());
+const CrawlerDetector = new Crawler()
+
+// check the current visitor's useragent
+if ( CrawlerDetector.isCrawler() )
+{
+  // true if crawler user agent detected
+}
+
+// or check a user agent string
+if ( CrawlerDetector.isCrawler('Mozilla/5.0 (compatible; Sosospider/2.0; +http://help.soso.com/webspider.htm)') )
+{
+  // true if crawler user agent detected
+}
+
+// Output the name of the bot that matched (if any)
+console.log(CrawlerDetector.getMatches())
+
+/**
+ * Or by using the middleware
+*/
+middleware((request, reponse) => {
+  // do something here
+  // e.g. console.log(request.body)
+  // e.g. return response.status(403).send('Forbidden')
+})
+
 ```
 
 ## Contributing
 
-If you find a bot/spider/crawler user agent that CrawlerDetect fails to detect, please submit a pull request with the regex pattern added to the `data` array in `./crawler/crawlers.js`.
+If you find a `bot/spider/crawler` user agent that CrawlerDetect fails to detect, please submit a pull request with the regex pattern added to the `data` array in `./crawler/crawlers.ts`.
