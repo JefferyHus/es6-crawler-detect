@@ -6,6 +6,7 @@
   "author": "Jeffery Hussin <jefferytutorials@gmail.com> (http://github.com/jefferyhus)",
   "license": "MIT",
   "dependencies": {
+    "es6-crawler-detect": "^4.0.0",
     "express": "^4.21.1"
   }
 }

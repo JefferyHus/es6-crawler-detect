@@ -1,8 +1,8 @@
 {
   "name": "es6-crawler-detect",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "This is an ES6 adaptation of the original PHP library CrawlerDetect, this library will help you detect bots/crawlers/spiders vie the useragent.",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "directories": {
     "lib": "lib"
   },
