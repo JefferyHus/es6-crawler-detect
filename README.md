@@ -6,7 +6,9 @@
 </p>
 
 [![DeepScan grade](https://deepscan.io/api/teams/16465/projects/19756/branches/518343/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=16465&pid=19756&bid=518343)
-[![npm version](https://badge.fury.io/js/es6-crawler-detect.svg)](https://badge.fury.io/js/es6-crawler-detect)
+![Static Badge](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=fff)
+[![npm version](https://badge.fury.io/js/es6-crawler-detect.svg?icon=si%3Anpm)](https://badge.fury.io/js/es6-crawler-detect)
+![NPM Downloads](https://img.shields.io/npm/dy/es6-crawler-detect)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/JefferyHus/es6-crawler-detect/issues)
 
 ## About
