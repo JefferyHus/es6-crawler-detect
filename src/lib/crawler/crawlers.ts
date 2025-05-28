@@ -1228,6 +1228,7 @@ export class Crawlers implements Provider {
       'VB Project',
       'vBSEO',
       'VCI',
+      'vercel',
       'via ggpht\\.com GoogleImageProxy',
       'Virusdie',
       'visionutils',
